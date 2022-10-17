@@ -429,7 +429,7 @@
     <created_user>-</created_user>
     <created_date>2022/10/15 11:45:39.373</created_date>
     <modified_user>-</modified_user>
-    <modified_date>2022/10/15 22:21:44.144</modified_date>
+    <modified_date>2022/10/17 13:55:23.829</modified_date>
     <key_for_session_key>H4sIAAAAAAAAAAMAAAAAAAAAAAA=</key_for_session_key>
     <is_key_private>N</is_key_private>
   </info>
@@ -437,12 +437,7 @@
   </notepads>
   <order>
     <hop>
-      <from>Get file names</from>
-      <to>remove extension</to>
-      <enabled>Y</enabled>
-    </hop>
-    <hop>
-      <from>remove extension</from>
+      <from>Get repository names</from>
       <to>Copy rows to result</to>
       <enabled>Y</enabled>
     </hop>
@@ -473,8 +468,8 @@
     </GUI>
   </step>
   <step>
-    <name>Get file names</name>
-    <type>GetFileNames</type>
+    <name>Get repository names</name>
+    <type>GetRepositoryNames</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -483,25 +478,14 @@
       <method>none</method>
       <schema_name/>
     </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field/>
-    <filename_Field/>
-    <wildcard_Field/>
-    <exclude_wildcard_Field/>
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
+    <object_type>All</object_type>
+    <rownum>Y</rownum>
+    <rownum_field>rownr</rownum_field>
     <file>
-      <name>${rep_dir}</name>
-      <filemask>.*</filemask>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>N</include_subfolders>
+      <directory>${rep_dir_name}</directory>
+      <name_mask>.*</name_mask>
+      <exclude_name_mask/>
+      <include_subfolders>Y</include_subfolders>
     </file>
     <attributes/>
     <cluster_schema/>
@@ -512,53 +496,7 @@
       </output>
     </remotesteps>
     <GUI>
-      <xloc>80</xloc>
-      <yloc>192</yloc>
-      <draw>Y</draw>
-    </GUI>
-  </step>
-  <step>
-    <name>remove extension</name>
-    <type>ScriptValueMod</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-    <partitioning>
-      <method>none</method>
-      <schema_name/>
-    </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>
-      <jsScript>
-        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>//Script here
-
-var short_filename = short_filename.replace(/\.[^/.]+$/, "")</jsScript_script>
-      </jsScript>
-    </jsScripts>
-    <fields>
-      <field>
-        <name>short_filename</name>
-        <rename>short_filename</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>Y</replace>
-      </field>
-    </fields>
-    <attributes/>
-    <cluster_schema/>
-    <remotesteps>
-      <input>
-      </input>
-      <output>
-      </output>
-    </remotesteps>
-    <GUI>
-      <xloc>224</xloc>
+      <xloc>176</xloc>
       <yloc>192</yloc>
       <draw>Y</draw>
     </GUI>

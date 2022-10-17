@@ -1,18 +1,53 @@
 <job>
-  <name>run_list_transfromation_jb</name>
+  <name>run_metadata_injection_jb</name>
   <description/>
   <extended_description/>
   <job_version/>
   <job_status>0</job_status>
-  <directory>/example_4</directory>
+  <directory>/example_5</directory>
   <created_user>-</created_user>
-  <created_date>2022/10/15 11:47:25.096</created_date>
+  <created_date>2022/10/16 11:13:14.957</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2022/10/17 13:58:34.940</modified_date>
+  <modified_date>2022/10/16 11:16:59.108</modified_date>
   <parameters>
     <parameter>
-      <name>rep_dir_name</name>
-      <default_value>/example_4/transformations</default_value>
+      <name>source_connection_name</name>
+      <default_value>conn_source_db</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>source_table_name</name>
+      <default_value>clients</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>source_table_schema</name>
+      <default_value>shop</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>stage_table_name</name>
+      <default_value>raw_data</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>stage_table_schema</name>
+      <default_value>shop_clients_stage</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>target_connection_name</name>
+      <default_value>conn_dwh_db</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>target_table_name</name>
+      <default_value>shop_clients</default_value>
+      <description/>
+    </parameter>
+    <parameter>
+      <name>target_table_schema</name>
+      <default_value>raw_data</default_value>
       <description/>
     </parameter>
   </parameters>
@@ -309,20 +344,20 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>352</xloc>
-      <yloc>288</yloc>
+      <xloc>192</xloc>
+      <yloc>176</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
-      <name>get_list_transformations_tr</name>
+      <name>metadata_injection_tr</name>
       <description/>
       <type>TRANS</type>
       <attributes/>
       <specification_method>rep_name</specification_method>
       <trans_object_id/>
       <filename/>
-      <transname>get_list_transformations_tr</transname>
-      <directory>/example_4</directory>
+      <transname>metadata_injection_tr</transname>
+      <directory>/example_5</directory>
       <arg_from_previous>N</arg_from_previous>
       <params_from_previous>N</params_from_previous>
       <exec_per_row>N</exec_per_row>
@@ -345,12 +380,52 @@
       <suppress_result_data>N</suppress_result_data>
       <parameters>
         <pass_all_parameters>Y</pass_all_parameters>
+        <parameter>
+          <name>source_connection_name</name>
+          <stream_name/>
+          <value>${source_connection_name}</value>
+        </parameter>
+        <parameter>
+          <name>source_table_name</name>
+          <stream_name/>
+          <value>${source_table_name}</value>
+        </parameter>
+        <parameter>
+          <name>source_table_schema</name>
+          <stream_name/>
+          <value>${source_table_schema}</value>
+        </parameter>
+        <parameter>
+          <name>stage_table_name</name>
+          <stream_name/>
+          <value>${stage_table_name}</value>
+        </parameter>
+        <parameter>
+          <name>stage_table_schema</name>
+          <stream_name/>
+          <value>${stage_table_schema}</value>
+        </parameter>
+        <parameter>
+          <name>target_connection_name</name>
+          <stream_name/>
+          <value>${target_connection_name}</value>
+        </parameter>
+        <parameter>
+          <name>target_table_name</name>
+          <stream_name/>
+          <value>${target_table_name}</value>
+        </parameter>
+        <parameter>
+          <name>target_table_schema</name>
+          <stream_name/>
+          <value>${target_table_schema}</value>
+        </parameter>
       </parameters>
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>480</xloc>
-      <yloc>288</yloc>
+      <xloc>336</xloc>
+      <yloc>176</yloc>
       <attributes_kjc/>
     </entry>
     <entry>
@@ -361,57 +436,15 @@
       <parallel>N</parallel>
       <draw>Y</draw>
       <nr>0</nr>
-      <xloc>768</xloc>
-      <yloc>288</yloc>
-      <attributes_kjc/>
-    </entry>
-    <entry>
-      <name>run_transformation_jb</name>
-      <description/>
-      <type>JOB</type>
-      <attributes/>
-      <specification_method>rep_name</specification_method>
-      <job_object_id/>
-      <filename/>
-      <jobname>run_transformation_jb</jobname>
-      <directory>/example_4</directory>
-      <arg_from_previous>N</arg_from_previous>
-      <params_from_previous>Y</params_from_previous>
-      <exec_per_row>Y</exec_per_row>
-      <set_logfile>N</set_logfile>
-      <logfile/>
-      <logext/>
-      <add_date>N</add_date>
-      <add_time>N</add_time>
-      <loglevel>Nothing</loglevel>
-      <slave_server_name/>
-      <wait_until_finished>Y</wait_until_finished>
-      <follow_abort_remote>N</follow_abort_remote>
-      <expand_remote_job>N</expand_remote_job>
-      <create_parent_folder>N</create_parent_folder>
-      <pass_export>N</pass_export>
-      <run_configuration>Pentaho local</run_configuration>
-      <parameters>
-        <pass_all_parameters>N</pass_all_parameters>
-        <parameter>
-          <name>object</name>
-          <stream_name>object</stream_name>
-          <value/>
-        </parameter>
-      </parameters>
-      <set_append_logfile>N</set_append_logfile>
-      <parallel>N</parallel>
-      <draw>Y</draw>
-      <nr>0</nr>
-      <xloc>624</xloc>
-      <yloc>288</yloc>
+      <xloc>464</xloc>
+      <yloc>176</yloc>
       <attributes_kjc/>
     </entry>
   </entries>
   <hops>
     <hop>
       <from>Start</from>
-      <to>get_list_transformations_tr</to>
+      <to>metadata_injection_tr</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
       <enabled>Y</enabled>
@@ -419,16 +452,7 @@
       <unconditional>Y</unconditional>
     </hop>
     <hop>
-      <from>get_list_transformations_tr</from>
-      <to>run_transformation_jb</to>
-      <from_nr>0</from_nr>
-      <to_nr>0</to_nr>
-      <enabled>Y</enabled>
-      <evaluation>Y</evaluation>
-      <unconditional>N</unconditional>
-    </hop>
-    <hop>
-      <from>run_transformation_jb</from>
+      <from>metadata_injection_tr</from>
       <to>Success</to>
       <from_nr>0</from_nr>
       <to_nr>0</to_nr>
